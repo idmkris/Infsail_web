@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import showcase from "/public/showcase.png";
 import ExpandCircleDownRoundedIcon from "@mui/icons-material/ExpandCircleDownRounded";
+
 const HomePage = () => {
   const stars = Array(5).fill(0);
   const handleScrollDown = () => {
@@ -14,18 +15,13 @@ const HomePage = () => {
   };
   return (
     <div>
-      <div className="top-0 w-full h-screen flex items-center justify-center">
-        <video
-          autoPlay
-          muted
-          loop
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src="/background.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <div className="top-0 w-full h-screen flex mt-48 justify-center">
+        <div className="absolute w-full h-5/6 inset-0 z-0 bg-no-repeat bg-cover animate-zoom  bg-[url('/bg.jpg')]">
+          {/* Background Image with Zoom Animation */}
+        </div>
         <ExpandCircleDownRoundedIcon
-          className="absolute text-6xl bottom-6 right-6 text-white cursor-pointer"
+          className="absolute text-6xl bottom-48 right-4 cursor-pointer"
+          style={{ color: 'black' }}
           onClick={handleScrollDown}
         />
         <div className="relative z-10 text-center text-white">
@@ -37,13 +33,14 @@ const HomePage = () => {
             Path to Financial Independence
           </div>
           <div className="pt-20 pb-48">
-            <button className="bg-black text-white px-9 py-3 rounded-full text-lg">
+            <button className="bg-black text-white px-9 py-3 rounded-md text-lg">
               Learn More
             </button>
           </div>
         </div>
       </div>
-      <div className="flex flex-col pt-10 items-center min-h-screen">
+      <hr className="border-0 h-0.5 bg-gray-300 w-1/2 mx-auto my-6 mt-16" />
+      <div className="flex flex-col pt-2 items-center min-h-screen">
         <div className="mt-32 flex flex-col-reverse lg:flex-row items-center relative pb-20">
           <div className="lg:w-1/2 lg:px-40 relative z-10">
             <h3 className="font-bold tracking-tight leading-tight text-gray-darker text-xl">
@@ -81,10 +78,7 @@ const HomePage = () => {
                 have all the resources we need to succeed. From the dedicated
                 staff who host webinars and Zoom sessions, to the incredible
                 community that interacts and shares insights daily, it's truly
-                an amazing experience. The "Daily Watch" feature is a
-                game-changer, providing timely and valuable insights that help
-                me stay ahead in my trading. Thank you, Infsail, for all that
-                you do. I'm here for the long haul!”
+                an amazing experience. Shoutout to the Infsail team and keep up the great work!”
               </h3>
               <p className="text-gray-900 text-center text-xl font-bold">
                 @invescozxw, Member

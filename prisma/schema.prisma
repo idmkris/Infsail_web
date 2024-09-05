@@ -1,0 +1,51 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model User {
+  id             String          @id @default(uuid())
+  email          String          @unique
+  name           String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  isFirstTimeUser Boolean        @default(true) // Optional
+  accounts       Account[]
+  subscriptions  Subscription[] // Relation to Subscription model
+}
+
+model Subscription {
+  id              String   @id @default(uuid())
+  userId          String
+  type            String   // e.g., "monthly", "yearly"
+  status          String   // e.g., "active", "inactive"
+  startDate       DateTime
+  endDate         DateTime
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Account {
+  id                 String    @id @default(uuid())
+  userId             String
+  provider           String
+  providerAccountId  String
+  type               String
+  access_token       String?
+  expires_at         Int?
+  id_token           String?
+  token_type         String?
+  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+

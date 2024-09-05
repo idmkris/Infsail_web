@@ -8,11 +8,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      keyframes: {
+        zoom: {
+          '0%, 100%': { 'background-size': '100%' },
+          '50%': { 'background-size': '105%' },
+        },
       },
+      animation: {
+        zoom: 'zoom 50s ease-in-out infinite',
+      },
+    },
+    screens:{
+      'sm': '800px',
+      'md': '1024px',
+      'lg': '1280px',
+      'xl': '1440px',
+      '2xl': '1536px',
     },
   },
   plugins: [],

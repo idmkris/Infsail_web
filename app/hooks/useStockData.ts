@@ -1,6 +1,6 @@
 'use client'
 import useSWR from 'swr';
-import { fetchStockData } from '../api/Index/routes';
+import { fetchStockData } from '../api/Index/route';
 
 
 

@@ -1,18 +1,20 @@
+'use client'
+import { useRouter } from "next/navigation";
+
 const About = () => {
-    return (
-      <div className="p-8 mx-auto max-w-4xl">
-        <h1 className="text-4xl font-bold mb-4">About Us</h1>
-        <p className="text-lg mb-4">
-          Welcome to our company! We are dedicated to providing the best services and solutions to our clients.
-          Our team is passionate about delivering high-quality results and ensuring customer satisfaction.
-        </p>
-        <p className="text-lg">
-          Our mission is to innovate and excel in our industry, making a positive impact through our work and
-          contributing to the success of our partners and clients.
-        </p>
+  const router = useRouter();
+  return (
+    <div className="flex flex-col items-center min-h-screen bg-white">
+
+      <div className="mt-36 mb-40 text-center space-y-8">
+        <h1 className="text-7xl mb-10 font-bold">About Infsail</h1>
+        <p className="text-xl mb-4">Infsail offers education and opportunities to invest, empowering you<br /> to grow your wealth.</p>
+        <button className="mt-12 px-8 py-4 bg-black font-semibold text-lg text-white" onClick={() => {
+          router.push("/auth/sign-in");
+        }}>Invest in Infsail</button>
       </div>
-    );
-  };
-  
-  export default About;
-  
+    </div>
+  );
+};
+
+export default About;

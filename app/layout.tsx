@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-const inter = Inter({ subsets: ["latin"] });
+import Footer from "./(home)/Footer";
+import { Montserrat } from 'next/font/google';
+import ClientLayout from "./components/ClientLayout";
+
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "Infsail",
@@ -11,19 +15,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+
 }: Readonly<{
   children: React.ReactNode;
+
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {" "}
-        <Navbar />
-        <main className="pt-24">
-          {" "}
-          {/* Adjust padding to account for fixed navbar */}
-          {children}
-        </main>
+      <body className={`${montserrat.className} flex flex-col min-h-screen`}>
+        <SessionProvider>
+          <ClientLayout>
+            {children}
+          </ClientLayout>
+        </SessionProvider>
       </body>
     </html>
   );
